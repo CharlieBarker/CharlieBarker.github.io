@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-UK"
-title                    : "Charlie Barker, Ph.D."
+title                    : "Charlie Barker"
 title_separator          : "-"
 name                     : &name "Charlie Barker"
 description              : &description "I am a bioinformatician and computational biologist with a Ph.D. from EMBL-EBI/University of Cambridge, specializing in multi-omics data integration, network modeling, and mechanistic analysis of cellular signaling. "
