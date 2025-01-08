@@ -22,7 +22,7 @@ repository               : "https://charliebarker.github.io"
 author:
   # Biographic information
   avatar           : "profile.jpg"
-  name             : "Charlie Brker"
+  name             : "Charlie Barker"
   pronouns         : # example: "He/him"  
   bio              : "Bioinformatician specialising in data science and mutli-omics integrations using state-of-the-art tools"
   location         : "London"
