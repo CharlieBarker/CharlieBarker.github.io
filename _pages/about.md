@@ -13,13 +13,4 @@ I am a **bioinformatician** and **computational biologist** with a Ph.D. from **
 
 Please explore my website to see further details of my work and interests!
 
-## Contact Information
-
-- **Email**: [charles.barker.14@ucl.ac.uk](mailto:charles.barker.14@ucl.ac.uk)
-- **Twitter**: [@cgbarker](https://twitter.com/cgbarker)
-- **GitHub**: [charlie-barker](https://github.com/charlie-barker)
-
----
-
-This site is powered by the [Academic Pages](https://github.com/academicpages/academicpages.github.io) template and hosted on **GitHub Pages**.
 
