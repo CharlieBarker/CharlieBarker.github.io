@@ -1,0 +1,110 @@
+---
+layout: archive
+title: "Metrics"
+permalink: /metrics/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p>Publication and citation metrics, updated weekly from <a href="https://openalex.org/">OpenAlex</a>. Preprint and journal versions of the same paper are counted once. See also my <a href="{{ site.author.googlescholar }}">Google Scholar profile</a>, which may differ slightly.</p>
+
+<div id="m-controls" style="margin-bottom:1em">
+  <label><input type="radio" name="m-scope" value="all" checked> All papers</label>
+  <label style="margin-left:1em"><input type="radio" name="m-scope" value="first_author"> First-author papers</label>
+</div>
+
+<div id="m-tiles" style="display:flex;flex-wrap:wrap;gap:1em;margin-bottom:1em"></div>
+
+<div id="m-cum" style="height:380px"></div>
+<div id="m-new" style="height:320px"></div>
+<div id="m-snap" style="height:320px;display:none"></div>
+
+<h2>Papers</h2>
+<table id="m-table" style="width:100%;font-size:0.85em">
+  <thead><tr>
+    <th data-k="title">Title</th><th data-k="date">Date</th><th data-k="venue">Venue</th>
+    <th data-k="citations">Citations</th><th data-k="altmetric">Altmetric</th>
+  </tr></thead>
+  <tbody></tbody>
+</table>
+<p id="m-updated" style="font-size:0.8em;color:#777"></p>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script>
+(function () {
+  var COLORS = {papers: "#2a7ab9", citations: "#d9731a", h: "#3a9d5d"};
+  var data, scope = "all", sortKey = "date", sortDir = -1;
+
+  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+
+  function tile(label, value) {
+    return '<div style="border:1px solid #ddd;border-radius:6px;padding:.6em 1em;min-width:7em;text-align:center">' +
+      '<div style="font-size:1.8em;font-weight:600">' + value + '</div><div style="font-size:.8em;color:#666">' + label + '</div></div>';
+  }
+
+  function render() {
+    var rows = data.yearly[scope];
+    var papers = data.papers.filter(function (p) { return scope === "all" || p.first_author; });
+    var last = rows[rows.length - 1] || {papers: 0, citations: 0, h_index: 0};
+    var alt = papers.reduce(function (s, p) { return s + (p.altmetric ? p.altmetric.score : 0); }, 0);
+    var t = tile("papers", last.papers) + tile("citations", last.citations) + tile("h-index", last.h_index);
+    if (data.altmetric_enabled) t += tile("Altmetric (sum)", alt.toFixed(1));
+    document.getElementById("m-tiles").innerHTML = t;
+
+    var years = rows.map(function (r) { return r.year; });
+    var layout = {margin: {t: 40, r: 50, l: 50, b: 40}, legend: {orientation: "h", y: -0.15}, hovermode: "x unified",
+                  xaxis: {dtick: 1}, title: {text: "Cumulative totals at year end"}};
+    Plotly.react("m-cum", [
+      {x: years, y: rows.map(function (r) { return r.citations; }), name: "Citations", mode: "lines+markers", line: {color: COLORS.citations}},
+      {x: years, y: rows.map(function (r) { return r.papers; }), name: "Papers", mode: "lines+markers", line: {color: COLORS.papers}},
+      {x: years, y: rows.map(function (r) { return r.h_index; }), name: "h-index", mode: "lines+markers", line: {color: COLORS.h}, yaxis: "y2"}
+    ], Object.assign({}, layout, {yaxis: {title: "Citations / papers", rangemode: "tozero"},
+      yaxis2: {title: "h-index", overlaying: "y", side: "right", rangemode: "tozero", dtick: 1, showgrid: false}}), {responsive: true});
+
+    Plotly.react("m-new", [{x: years, y: rows.map(function (r) { return r.new_citations; }), type: "bar", name: "New citations", marker: {color: COLORS.citations}}],
+      {margin: layout.margin, xaxis: {dtick: 1}, yaxis: {title: "Citations received", rangemode: "tozero"},
+       title: {text: "Citations received per year" + (years.length ? " (" + years[years.length - 1] + " to date)" : "")}}, {responsive: true});
+
+    var snapEl = document.getElementById("m-snap");
+    if (data.snapshots.length > 1) {
+      snapEl.style.display = "block";
+      var dates = data.snapshots.map(function (s) { return s.date; });
+      var tr = [{x: dates, y: data.snapshots.map(function (s) { return s.citations; }), name: "Citations", mode: "lines+markers", line: {color: COLORS.citations}},
+                {x: dates, y: data.snapshots.map(function (s) { return s.h_index; }), name: "h-index", mode: "lines+markers", line: {color: COLORS.h}, yaxis: "y2"}];
+      if (data.altmetric_enabled) tr.push({x: dates, y: data.snapshots.map(function (s) { return s.altmetric; }), name: "Altmetric (sum)", mode: "lines+markers", line: {color: "#8e44ad"}});
+      Plotly.react("m-snap", tr, {margin: layout.margin, legend: layout.legend, hovermode: "x unified",
+        title: {text: "Weekly snapshots (all papers)"}, yaxis: {rangemode: "tozero"},
+        yaxis2: {overlaying: "y", side: "right", rangemode: "tozero", showgrid: false}}, {responsive: true});
+    } else { snapEl.style.display = "none"; }
+
+    papers = papers.slice().sort(function (a, b) {
+      var av = sortKey === "altmetric" ? (a.altmetric ? a.altmetric.score : -1) : a[sortKey];
+      var bv = sortKey === "altmetric" ? (b.altmetric ? b.altmetric.score : -1) : b[sortKey];
+      return (av > bv ? 1 : av < bv ? -1 : 0) * sortDir;
+    });
+    document.querySelector("#m-table tbody").innerHTML = papers.map(function (p) {
+      var a = p.altmetric ? '<a href="' + esc(p.altmetric.url) + '">' + p.altmetric.score + '</a>' : "–";
+      return "<tr><td><a href=\"https://doi.org/" + esc(p.doi) + "\">" + esc(p.title) + "</a>" + (p.first_author ? " <b title=\"first author\">★</b>" : "") +
+        "</td><td>" + esc(p.date) + "</td><td>" + esc(p.venue) + "</td><td>" + p.citations + "</td><td>" + a + "</td></tr>";
+    }).join("");
+  }
+
+  fetch("{{ base_path }}/assets/data/metrics.json").then(function (r) { return r.json(); }).then(function (d) {
+    data = d;
+    document.getElementById("m-updated").textContent = "Last updated " + d.generated.slice(0, 10) + " (" + d.source + ").";
+    render();
+  }).catch(function () { document.getElementById("m-tiles").textContent = "Metrics are unavailable right now."; });
+
+  document.querySelectorAll('input[name="m-scope"]').forEach(function (el) {
+    el.addEventListener("change", function () { scope = el.value; render(); });
+  });
+  document.querySelectorAll("#m-table th").forEach(function (th) {
+    th.style.cursor = "pointer";
+    th.addEventListener("click", function () {
+      var k = th.getAttribute("data-k");
+      sortDir = k === sortKey ? -sortDir : -1; sortKey = k; render();
+    });
+  });
+})();
+</script>

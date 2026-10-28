@@ -7,14 +7,14 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-UK"
+locale                   : "en-GB"
 title                    : "Charlie Barker"
 title_separator          : "-"
 name                     : &name "Charlie Barker"
 description              : &description "I am a bioinformatician and computational biologist with a Ph.D. from EMBL-EBI/University of Cambridge, specializing in multi-omics data integration, network modeling, and mechanistic analysis of cellular signaling. "
 url                      : https://charliebarker.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "https://charliebarker.github.io"
+repository               : "CharlieBarker/CharlieBarker.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -24,7 +24,7 @@ author:
   avatar           : "profile.jpg"
   name             : "Charlie Barker"
   pronouns         : # example: "He/him"  
-  bio              : "Bioinformatician specialising in data science and mutli-omics integrations using state-of-the-art tools"
+  bio              : "Bioinformatician specialising in data science and multi-omics integrations using state-of-the-art tools"
   location         : "London"
   employer         : "UCL"
   uri              : # URL
@@ -57,7 +57,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "charlie-barker"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -157,6 +157,7 @@ exclude:
   - CHANGELOG
   - Capfile
   - Gemfile
+  - scripts
   - Gruntfile.js
   - LICENSE
   - README
