@@ -100,8 +100,12 @@ author_profile: true
     el.addEventListener("change", function () { scope = el.value; render(); });
   });
   document.querySelectorAll("#m-table th").forEach(function (th) {
-    th.style.cursor = "pointer";
-    th.addEventListener("click", function () {
+    var button = document.createElement("button");
+    button.type = "button";
+    button.textContent = th.textContent;
+    th.textContent = "";
+    th.appendChild(button);
+    button.addEventListener("click", function () {
       var k = th.getAttribute("data-k");
       sortDir = k === sortKey ? -sortDir : -1; sortKey = k; render();
     });
