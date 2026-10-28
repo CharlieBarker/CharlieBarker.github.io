@@ -9,7 +9,7 @@ redirect_from:
 
 # Charlie G. Barker, Ph.D.
 
-I am a **bioinformatician** and **computational biologist** with a Ph.D. from **EMBL-EBI/University of Cambridge**, specializing in multi-omics data integration, network modeling, and mechanistic analysis of cellular signaling. I am currently a **Research Fellow** at **University College London (UCL)**, where my research focuses on developing computational models to explore the interaction between mutations and signaling pathways in **cancer progression**. My goal is to identify personalized therapeutic strategies to improve cancer treatment outcomes.
+I am a **computational biologist** with a Ph.D. from **EMBL-EBI/University of Cambridge**, specialising in end-to-end multi-omics integration, network modelling, and AI-driven translational bioinformatics. I am currently a **Postdoctoral Researcher** in Team VPE (Virtual Patient Engine), in partnership with **Sanofi**, building AI-driven virtual patients to predict drug efficacy in chronic immune-mediated diseases. Previously, as a Research Fellow at **UCL**, I developed graph neural network and mechanistic models to study drug resistance and combination therapies in cancer.
 
 Please explore my website to see further details of my work and interests!
 
