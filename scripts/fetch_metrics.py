@@ -58,7 +58,7 @@ def norm_doi(doi):
 
 
 def norm_title(t):
-    return "".join(c for c in t.lower() if c.isalnum())[:60]
+    return "".join(c for c in t.lower() if c.isalnum())
 
 
 def h_index(counts):
