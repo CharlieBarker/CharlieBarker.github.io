@@ -36,7 +36,7 @@ author_profile: true
   var COLORS = {papers: "#2a7ab9", citations: "#d9731a", h: "#3a9d5d"};
   var data, scope = "all", sortKey = "date", sortDir = -1;
 
-  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML.replace(/"/g, "&quot;"); }
 
   function tile(label, value) {
     return '<div style="border:1px solid #ddd;border-radius:6px;padding:.6em 1em;min-width:7em;text-align:center">' +
