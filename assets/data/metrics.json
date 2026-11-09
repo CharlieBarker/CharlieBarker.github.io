@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-02T15:27:59+00:00",
+ "generated": "2026-11-09T15:54:12+00:00",
  "author": "Charlie George Barker",
  "source": "OpenAlex",
  "altmetric_enabled": false,
  "totals": {
-  "date": "2026-11-02",
-  "papers": 7,
+  "date": "2026-11-09",
+  "papers": 6,
   "first_author_papers": 2,
-  "citations": 55,
+  "citations": 52,
   "h_index": 3,
   "altmetric": null
  },
@@ -16,35 +16,35 @@
    {
     "year": 2022,
     "papers": 2,
-    "citations": 2,
+    "citations": 1,
     "h_index": 1,
-    "new_citations": 2
+    "new_citations": 1
    },
    {
     "year": 2023,
     "papers": 2,
-    "citations": 9,
+    "citations": 7,
     "h_index": 2,
-    "new_citations": 7
+    "new_citations": 6
    },
    {
     "year": 2024,
-    "papers": 3,
-    "citations": 20,
+    "papers": 2,
+    "citations": 16,
     "h_index": 2,
-    "new_citations": 11
+    "new_citations": 9
    },
    {
     "year": 2025,
-    "papers": 5,
-    "citations": 41,
+    "papers": 3,
+    "citations": 34,
     "h_index": 2,
-    "new_citations": 21
+    "new_citations": 22
    },
    {
     "year": 2026,
-    "papers": 7,
-    "citations": 55,
+    "papers": 6,
+    "citations": 52,
     "h_index": 3,
     "new_citations": 14
    }
@@ -60,28 +60,28 @@
    {
     "year": 2023,
     "papers": 1,
-    "citations": 5,
+    "citations": 4,
     "h_index": 1,
-    "new_citations": 4
+    "new_citations": 3
    },
    {
     "year": 2024,
-    "papers": 2,
-    "citations": 9,
+    "papers": 1,
+    "citations": 7,
     "h_index": 1,
-    "new_citations": 4
+    "new_citations": 3
    },
    {
     "year": 2025,
-    "papers": 2,
-    "citations": 15,
+    "papers": 1,
+    "citations": 11,
     "h_index": 1,
-    "new_citations": 6
+    "new_citations": 5
    },
    {
     "year": 2026,
     "papers": 2,
-    "citations": 19,
+    "citations": 16,
     "h_index": 1,
     "new_citations": 4
    }
@@ -99,9 +99,10 @@
    "venue": "Nature Metabolism",
    "type": "article",
    "first_author": false,
-   "citations": 4,
+   "citations": 6,
    "by_year": {
-    "2026": 4
+    "2025": 1,
+    "2026": 5
    }
   },
   {
@@ -115,8 +116,26 @@
    "venue": "Cancer Research",
    "type": "article",
    "first_author": false,
-   "citations": 0,
-   "by_year": {}
+   "citations": 2,
+   "by_year": {
+    "2025": 2
+   }
+  },
+  {
+   "title": "Integrative multi-omics defines melanoma drug response networks and ARID1A-dependent resistance mechanisms",
+   "doi": "10.1038/s44320-025-00183-5",
+   "dois": [
+    "10.1038/s44320-025-00183-5"
+   ],
+   "year": 2026,
+   "date": "2026-02-18",
+   "venue": "Molecular Systems Biology",
+   "type": "article",
+   "first_author": true,
+   "citations": 1,
+   "by_year": {
+    "2025": 1
+   }
   },
   {
    "title": "MAGELLAN: Automated Generation of Interpretable Computational Models for Biological Reasoning",
@@ -133,40 +152,6 @@
    "by_year": {}
   },
   {
-   "title": "Decoding MASLD Progression: A Molecular Trajectory-Based Framework for Modelling Disease Dynamics",
-   "doi": "10.1101/2025.01.14.632908",
-   "dois": [
-    "10.1101/2025.01.14.632908"
-   ],
-   "year": 2025,
-   "date": "2025-01-18",
-   "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-   "type": "preprint",
-   "first_author": false,
-   "citations": 2,
-   "by_year": {
-    "2025": 1,
-    "2026": 1
-   }
-  },
-  {
-   "title": "Integrative multi-omics defines melanoma drug response networks and ARID1A-dependent resistance mechanisms",
-   "doi": "10.1038/s44320-025-00183-5",
-   "dois": [
-    "10.1101/2024.12.05.626952",
-    "10.1038/s44320-025-00183-5"
-   ],
-   "year": 2024,
-   "date": "2024-12-09",
-   "venue": "Molecular Systems Biology",
-   "type": "article",
-   "first_author": true,
-   "citations": 1,
-   "by_year": {
-    "2025": 1
-   }
-  },
-  {
    "title": "Inter-gastruloid heterogeneity revealed by single cell transcriptomics time course: implications for organoid based perturbation studies",
    "doi": "10.1101/2022.09.27.509783",
    "dois": [
@@ -177,11 +162,10 @@
    "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
    "type": "preprint",
    "first_author": false,
-   "citations": 30,
+   "citations": 28,
    "by_year": {
-    "2022": 1,
     "2023": 3,
-    "2024": 7,
+    "2024": 6,
     "2025": 14,
     "2026": 5
    }
@@ -197,12 +181,12 @@
    "venue": "Genome Research",
    "type": "preprint",
    "first_author": true,
-   "citations": 18,
+   "citations": 15,
    "by_year": {
     "2022": 1,
-    "2023": 4,
-    "2024": 4,
-    "2025": 5,
+    "2023": 3,
+    "2024": 3,
+    "2025": 4,
     "2026": 4
    }
   }
@@ -221,6 +205,14 @@
    "papers": 7,
    "first_author_papers": 2,
    "citations": 55,
+   "h_index": 3,
+   "altmetric": null
+  },
+  {
+   "date": "2026-11-09",
+   "papers": 6,
+   "first_author_papers": 2,
+   "citations": 52,
    "h_index": 3,
    "altmetric": null
   }
